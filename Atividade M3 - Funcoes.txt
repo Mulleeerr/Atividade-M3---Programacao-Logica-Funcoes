@@ -1,0 +1,51 @@
+% Questao 1 - Verificar Ordenação
+
+ordenado([]).
+ordenado([_]).
+ordenado([X,Y|T]) :-
+    X =< Y,
+    ordenado([Y|T]).
+
+%para chamar - ordenado([a, b, c, d, ...])
+
+% Questao 2 - Verificar maior número
+
+max_lista([X], X).
+max_lista([H|T], Max) :-
+    max_lista(T, MaxT),
+    (H > MaxT -> Max = H ; Max = MaxT).
+
+% para chamar - max_lista([3, 7, 2, 9, 4], Max).
+
+% Questao 3 - Fibonacci
+
+fibonacci(0, 0).
+fibonacci(1, 1).
+fibonacci(N, Resultado) :-
+    N > 1,
+    N1 is N - 1,
+    N2 is N - 2,
+    fibonacci(N1, R1),
+    fibonacci(N2, R2),
+    Resultado is R1 + R2.
+
+% para chamar - fibonacci(numero, Resultado)
+
+% Questao 4- Verificar se o numero é primo
+
+is_primo(2).
+is_primo(3).
+is_primo(P) :-
+    integer(P),
+    P > 3,
+    P mod 2 =\= 0,
+    \+ divisivel(P, 3).
+
+divisivel(P, D) :-
+    P mod D =:= 0.
+divisivel(P, D) :-
+    D * D < P,
+    D2 is D + 2,
+    divisivel(P, D2).
+
+% para chamar - is_primo(num)
